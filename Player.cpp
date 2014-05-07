@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <string>
 
-using namespace std::
+using namespace std;
 
 Player::Player(string name)
 {
