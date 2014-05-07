@@ -1,4 +1,5 @@
 #include "Weapon.h"
+#include <string>
 
 using namespace std::
 
