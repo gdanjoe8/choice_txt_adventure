@@ -4,7 +4,7 @@
 #include "Weapon.cpp"
 #include "Player.cpp"
 
-using namespace std::
+using namespace std;
 
 
 //typedef enum{intro, weapon_choice, chck_encounter, encount_gen, event_gen, boss1, boss2, boss3, event1, event2, event3, easy_fight, mid_fight, hard_fight}
