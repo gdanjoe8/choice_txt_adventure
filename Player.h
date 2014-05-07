@@ -1,6 +1,6 @@
 #include <sctring>
 
-using namespace std::
+using namespace std;
 
 class Player
 {
