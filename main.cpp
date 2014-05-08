@@ -24,6 +24,7 @@ int main()
 	string BoG;
 	string pinput;
 	string pinput2;
+	int courage = 1;
 	int lives = 2;
 
 	string test = "intro";
@@ -76,9 +77,40 @@ int main()
 				player1.setP_Accuracy(crossbow.getAccuracy());
 				player1.setP_Agility(crossbow.getAgility());
 			}
-
+			test = "fight";
+			break;
+		}
+		case "fight":
+		{
+			cout << "You have encountered an enemy" << endl;
+			cout << "Choose: fight or run" << endl;
+			cin >> pinput2;
+			while((pinput2 != "fight")||(pinput2 != "run"))
+			{
+				cout << "Choose: fight or run" << endl;
+				cin >> pinput2;
+			}
+			if(pinput2 == "fight")
+			{
+				test = "gameover";
+				break;
+			}
+			if(pinput2 == "run")
+			{
+				courage -=1;
+				test = "gameover";
+				break;
+			}
+		}
+		case "gameover":
+		{
+			cout << "Your choices were too much of a burden." << endl;
+			cout << "GAME OVER" << endl;
+			test = "";
+			break;
 		}
 
 	}
    }
+return 0;
 }
