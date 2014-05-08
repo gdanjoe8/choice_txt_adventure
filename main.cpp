@@ -27,6 +27,7 @@ int main()
 	int lives = 2;
 
 	string test = "intro";
+	while(1){
 	switch(test)
 	{
 		case "intro":
@@ -46,41 +47,42 @@ int main()
 		{
 			cout << "Choose: pistols, shotgun, rifle, or crossbow" << endl;
 			cin >> pinput2;
-			if (pinput == "pistols")
+			
+			while(pinput2 != "pistols" | pinput2 != "shotgun" | pinput2 != "rifle" | pinput2 != "crossbow")
+                                {
+                                        cout << "Choose: pistols, shotgun, rifle, or crossbow" << endl;
+                                        cin >> pinput2;
+                                }
+
+	
+			if (pinput2 == "pistols")
 			{
 				player1.setP_Power(pistols.getPower());
 				player1.setP_Accuracy(pistols.getAccuracy());
 				player1.setP_Agility(pistols.getAgility());
 			}
-			if(pinput == "shotgun")
+			if(pinput2 == "shotgun")
 			{
 				player1.setP_Power(shotgun.getPower());
 				player1.setP_Accuracy(shotgun.getAccuracy());
 				player1.setP_Agility(shotgun.getAgility());
 			}
-			if(pinput == "rifle")
+			if(pinput2 == "rifle")
 			{
 				player1.setP_Power(rifle.getPower());
 				player1.setP_Accuracy(rifle.getAccuracy());
 				player1.setP_Agility(rifle.getAgility());
 			}
-			if(pinput == "crossbow")
+			if(pinput2 == "crossbow")
 			{
 				player1.setP_Power(crossbow.getPower());
 				player1.setP_Accuracy(crossbow.getAccuracy());
 				player1.setP_Agility(crossbow.getAgility());
 			}
-			else
-			{
-				while(pinput != "pistols" | pinput != "shotgun" | pinput != "rifle" | pinput != "crossbow")
-				{
-					cout << "Choose: pistols, shotgun, rifle, or crossbow" << endl;
-					cin >> pinput2;
-				}
-			}
+			
 
 		}
-
+	
 	}
-
+    }
 }
