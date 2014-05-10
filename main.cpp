@@ -4,6 +4,8 @@
 #include <cmath>
 #include "Weapon.cpp"
 #include "Player.cpp"
+#include "Weapon.h"
+#include "Player.h"
 
 using namespace std::
 
@@ -23,10 +25,11 @@ int damage(int ppower, int epower)
 
 int main()
 {
-	Player player1 = Player("player1");
-	Player bandit = Player("bandit");
-	Player bounty_hunter = Player("bounty_hunter");
-	Player hitman = Player("hitman");
+	Player player1("player1");
+	Player bandit("bandit");
+	Player bounty_hunter("bounty_hunter");
+	Player hitman("hitman");
+	Player boss("boss");
 	string BOG;
 	string pinput;
 	string pinput2;
