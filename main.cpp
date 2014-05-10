@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <cmath>
 #include "Weapon.cpp"
 #include "Player.cpp"
 
@@ -16,7 +17,7 @@ int random(int numb)
 
 int damage(int ppower, int epower)
 {
-	int dealt = (((ppower*0.6) - (epower*0.4))(random(5)));
+	int dealt = abs(int((((ppower*0.6) - (epower*0.4))(random(5)))));
 	return dealt;
 }
 
@@ -26,10 +27,6 @@ int main()
 	Player bandit = Player("bandit");
 	Player bounty_hunter = Player("bounty_hunter");
 	Player hitman = Player("hitman");
-	Weapon pistols = Weapon(pistols, 4, 10, 3);
-	Weapon shotgun = Weapon(shotgun, 10, 2, 4);
-	Weapon rifle = Weapon(rifle, 6, 8, 7);
-	Weapon crossbow = Weapon(crossbow, 5, 3, 10);
 	string BOG;
 	string pinput;
 	string pinput2;
@@ -65,27 +62,27 @@ int main()
 			}
 			if (pinput2 == "pistols")
 			{
-				player1.setP_Power(pistols.getPower());
-				player1.setP_Accuracy(pistols.getAccuracy());
-				player1.setP_Agility(pistols.getAgility());
+				player1.setP_Power(4);
+				player1.setP_Accuracy(3);
+				player1.setP_Agility(10);
 			}
 			if(pinput2 == "shotgun")
 			{
-				player1.setP_Power(shotgun.getPower());
-				player1.setP_Accuracy(shotgun.getAccuracy());
-				player1.setP_Agility(shotgun.getAgility());
+				player1.setP_Power(10);
+				player1.setP_Accuracy(4);
+				player1.setP_Agility(2);
 			}
 			if(pinput2 == "rifle")
 			{
-				player1.setP_Power(rifle.getPower());
-				player1.setP_Accuracy(rifle.getAccuracy());
-				player1.setP_Agility(rifle.getAgility());
+				player1.setP_Power(6);
+				player1.setP_Accuracy(7);
+				player1.setP_Agility(8);
 			}
 			if(pinput2 == "crossbow")
 			{
-				player1.setP_Power(crossbow.getPower());
-				player1.setP_Accuracy(crossbow.getAccuracy());
-				player1.setP_Agility(crossbow.getAgility());
+				player1.setP_Power(5);
+				player1.setP_Accuracy(10);
+				player1.setP_Agility(3);
 			}
 			test = "fight";
 			break;
@@ -135,9 +132,17 @@ int main()
 		case "enemy1":
 		{
 			int randstat = random(1);
-			bandit.setAgility(player1.getAgility()+ randstat);
-			bandit.setPower(player1.getPower() + randstat);
-			bandit.setAccuracy(player1.getAccuracy() + randstat);
+			if(randstat == 0)
+			{
+				bandit.setAgility(player1.getAgility() - 1);
+				bandit.setPower(player1.getPower() - 1);
+			}	bandit.setAccuracy(player1.getAccuracy() - 1);
+			else if(randstat == 1)
+			{
+				bandit.setAgility(player1.getAgility() + 1);
+				bandit.setPower(player1.getPower() + 1);
+				bandit.setAccurcay(player1.getAccuracy() + 1);
+			}
 			test = "fight1";
 			break;
 		}
@@ -201,6 +206,88 @@ int main()
 				}
 			}
 			test = "encounter";
+			break;
+		}
+		case "boss":
+		{	
+			int phealth = 100;
+			int bhealth = 200;
+			int input;
+			bstat = random(15);
+			boss.setPower(player1.getPower() + bstat);
+			boss.setAccuracy(player1.getAccuracy() + bstat);
+			boss.setAgility(player1.getAgility() + bstat);
+			while((phealth <= 0) || (bhealth <= 0))
+			{
+				cout << "Choose: 1 2 3 4 5 " << endl;
+				cin >> pinput2;
+				while((input != 1)||(input != 2)||(input != 3)||(input != 4)||(input != 5))
+				{
+					cout << "Choose: 1 2 3 4 5 " << endl;
+					cin >> input;
+				}
+				int power = random(5);
+				int power2 = random(5);
+				while(power == power2)
+				{
+					power2 = random(5);
+				}
+				if(input = power)
+				{
+					cout << "Bad Choice: You take damage" << endl;
+					phealth = phealth - 10;
+					if(phealth <= 0)
+					{
+						test = "gameover";
+						break;
+					}
+					else
+					{
+						cout << "You have " << phealth << " health left" << endl;
+					}
+				}
+				if(input = power2)
+				{
+					cout << "Good Choice: The boss takes damage" << endl;
+					bhealth = bhealth - 10;
+					if(bhealth <= 0 )
+					{
+						test = "winfight";
+						break;
+					}
+					else
+					{
+						cout << "The boss has " << bhealth << "health left" << endl;
+					}
+				}
+				else
+				{
+					int bdealt = damage(boss.getPower(), player1.getPower());
+					phealth -= bdealt;
+					if(phealth < = 0)
+					{
+						cout << "The boss has finished you off" << endl;
+						test = "gameover";
+						break;
+					}
+					else
+					{
+						cout << "The boss dealt damage. You have " << phealth << " health left" << endl;
+						int pdealt = damage(player1.getPower(), boss.getPower());
+						bhealth -= pdealt;
+						if(bhealth <= 0)
+						{
+							cout << "You finished off the boss" << endl;
+							test = "winfight";
+							break;
+						}
+						else
+						{
+							cout << "The boss takes damage.  It has " << bhealth << " health left" << endl;
+						}
+					}
+				}	
+			}
 			break;
 		}
 		case "gameover":
