@@ -16,7 +16,10 @@ int random(int numb)
 
 int main()
 {
-	Player player1 = Player("player1")
+	Player player1 = Player("player1");
+	Player bandit = Player("bandit");
+	Player bounty_hunter = Player("bounty_hunter");
+	Player hitman = Player("hitman");
 	Weapon pistols = Weapon(pistols, 4, 10, 3);
 	Weapon shotgun = Weapon(shotgun, 10, 2, 4);
 	Weapon rifle = Weapon(rifle, 6, 8, 7);
@@ -24,8 +27,9 @@ int main()
 	string BoG;
 	string pinput;
 	string pinput2;
-	int courage = 1;
+	int courage = 3;
 	int lives = 2;
+	int playerlvl = 1;
 
 	string test = "intro";
 	while(test != ""){
@@ -79,6 +83,48 @@ int main()
 			}
 			test = "fight";
 			break;
+		}
+		case "encounter":
+		{
+			int chck = random(1);
+			if(chck == 0)
+			{
+				test = "eventmake";
+				break;
+			}
+			if(chck == 1)
+			{
+				test = "enemymake";
+				break;
+			}
+			else
+			{
+				test = "encounter";
+			}
+		}
+		case "enemymake":
+		{
+			if((playerlvl == 10)||(playerlvl == 18)||(playerlvl ==25))
+			{
+				test = "boss";
+				break;
+			}
+			int m = random(playerlvl);
+			if((m >= 1)&&(m < 10))
+			{
+				test = "enemy1";
+				break;
+			}
+			if((m > 10)&&(m < 18))
+			{
+				test = "enemy2";
+				break;
+			}
+			if((m > 18)&&(m < 25))
+			{
+				test = "enemy3";
+				break;
+			}
 		}
 		case "fight":
 		{
