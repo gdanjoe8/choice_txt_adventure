@@ -14,6 +14,12 @@ int random(int numb)
 	return rand_gen;
 }
 
+int damage(int ppower, int epower)
+{
+	int dealt = (((ppower*0.6) - (epower*0.4))(random(5)));
+	return dealt;
+}
+
 int main()
 {
 	Player player1 = Player("player1");
@@ -24,7 +30,7 @@ int main()
 	Weapon shotgun = Weapon(shotgun, 10, 2, 4);
 	Weapon rifle = Weapon(rifle, 6, 8, 7);
 	Weapon crossbow = Weapon(crossbow, 5, 3, 10);
-	string BoG;
+	string BOG;
 	string pinput;
 	string pinput2;
 	int courage = 3;
@@ -126,9 +132,19 @@ int main()
 				break;
 			}
 		}
-		case "fight":
+		case "enemy1":
 		{
-			cout << "You have encountered an enemy" << endl;
+			int randstat = random(1);
+			bandit.setAgility(player1.getAgility()+ randstat);
+			bandit.setPower(player1.getPower() + randstat);
+			bandit.setAccuracy(player1.getAccuracy() + randstat);
+			test = "fight1";
+			break;
+		}
+				
+		case "fight1":
+		{
+			cout << "You have encountered a bandit" << endl;
 			cout << "Choose: fight or run" << endl;
 			cin >> pinput2;
 			while((pinput2 != "fight")||(pinput2 != "run"))
@@ -138,15 +154,54 @@ int main()
 			}
 			if(pinput2 == "fight")
 			{
-				test = "gameover";
+				int phealth = 100;
+				int ehealth = 100;
+				while((phealth <= 0) ||(ehealth <= 0))
+				{
+					if(player1.getAgility() >  bandit.getAgility())
+					{
+						int dealt = damage(player1.getPower(), bandit.getPower());
+						ehealth = ehealth - dealt;
+						if(ehealth <= 0)
+						{
+							test = "winfight";
+							break;
+						}
+						else
+						{
+							int edealt = damage(bandit.getPower(), player1.getPower());
+							phealth = phealth - edealt;
+						}
+					}
+					else if(player1.getAgility() <= bandit.getAgility())
+					{
+						int endealt = damage(bandit.getPower(), player1.getPower());
+						phealth = phealth - endealt;
+						if(phealth <= 0)
+						{
+							test = "gameover";
+							break;
+						}
+						else
+						{
+							int pdealt = damage(player1.getPower(), bandit.getPower());
+							ehealth = ehealth - pdealt;
+						}
+					}
+				}
 				break;
 			}
 			if(pinput2 == "run")
 			{
 				courage -=1;
-				test = "gameover";
-				break;
+				if (courage <=0)
+				{
+					test = "gameover";
+					break;
+				}
 			}
+			test = "encounter";
+			break;
 		}
 		case "gameover":
 		{
