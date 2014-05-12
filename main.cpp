@@ -220,6 +220,7 @@ int main()
 								lives -= 1;
 								test = "weapon_choice";
 								break;
+							}
 							else
 							{
 								cout << "The bandit dealt damage." << "You have " << phealth << " health left" << endl;
@@ -468,6 +469,7 @@ int main()
 							cout << "The boss has finished you off" << endl;
 							test = "weapon_choice";
 							break;
+						}
 						else
 						{
 							cout << "The boss dealt damage. You have " << phealth << " health left" << endl;
