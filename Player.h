@@ -19,5 +19,5 @@ public:
 	int getP_Power();
 	int getP_Agility();
 	int getP_Accuracy();
-	int getP_Name();
+	string getP_Name();
 }
