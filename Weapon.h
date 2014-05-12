@@ -12,9 +12,9 @@ public:
 	Weapon(string, int, int ,int);
 	void setPower(int);
 	int getPower();
-	void setAgility(int);eap
+	void setAgility(int);
 	int getAgility(int);
 	void setAccuracy(int);
 	int getAccuracy(int);
 
-}
+};
