@@ -54,7 +54,7 @@ int main()
 				cout << "Choose a name:" << endl;
 				cin >> pinput;
 				player1.setP_Name(pinput);
-				case = "weapon_choice";
+				case = weapon_choice;
 				break;
 			}
 			
@@ -91,30 +91,30 @@ int main()
 					player1.setP_Accuracy(10);
 					player1.setP_Agility(3);
 				}
-				test = "enemymake";
+				test = enemymake;
 				break;
 			}
 			case enemymake://randomly pick between weak, medium, and strong enemy
 			{
 				if((playerlvl == 10)||(playerlvl == 18)||(playerlvl ==25))
 				{
-					test = "boss";
+					test = boss;
 					break;
 				}
 				int m = random(playerlvl);
 				if((m >= 1)&&(m < 10))
 				{
-					test = "enemy1";
+					test = enemy1;
 					break;
 				}
 				if((m > 10)&&(m < 18))
 				{
-					test = "enemy2";
+					test = enemy2;
 					break;
 				}
 				if((m > 18)&&(m < 25))
 				{
-					test = "enemy3";
+					test = enemy3;
 					break;
 				}
 			}
@@ -133,13 +133,13 @@ int main()
 					bandit.setP_Power(player1.getP_Power() + 1);
 					bandit.setP_Accurcay(player1.getP_Accuracy() + 1);
 				}
-				test = "fight1";
+				test = fight1;
 				break;
 			}
 			case enemy2://create medium enemy
 			{
 				int randchck = random(1);
-				int ranstat = random(5);
+				int randstat = random(5);
 				if(randchck == 0)
 				{
 					bounty_hunter.setP_Agility(player1.getP_Agility() - randstat);
@@ -152,7 +152,7 @@ int main()
 					bounty_hunter.setP_Power(player1.getP_Power() + randstat);
 					bountyhunter.setP_Accurcay(player1.getP_Accuracy() + randstat);
 				}
-				test = "fight2";
+				test = fight2;
 				break;
 			}
 			case enemy3://create strong enemy
@@ -171,7 +171,7 @@ int main()
 					hitman.setP_Power(player1.getP_Power() + randstat);
 					hitman.setP_Accurcay(player1.getP_Accuracy() + randstat);
 				}
-				test = "fight3";
+				test = fight3;
 				break;
 			}
 			case fight1://fight against weak enemy
@@ -196,7 +196,7 @@ int main()
 							ehealth = ehealth - dealt;
 							if(ehealth <= 0)
 							{
-								test = "winfight";
+								test = winfight;
 								break;
 							}
 							else
@@ -213,13 +213,13 @@ int main()
 							phealth = phealth - endealt;
 							if((phealth <= 0)&& (lives <= 0))
 							{
-								test = "gameover";
+								test = gameover;
 								break;
 							}
 							if((phealth <= 0)&&(lives >0))
 							{
 								lives -= 1;
-								test = "weapon_choice";
+								test = weapon_choice;
 								break;
 							}
 							else
@@ -238,11 +238,11 @@ int main()
 					courage -=1;
 					if (courage <=0)
 					{
-						test = "gameover";
+						test = gameover;
 						break;
 					}
 				}
-				test = "enemymake";
+				test = enemymake;
 				break;
 			}
 			case fight2://fight against medium enemy
@@ -267,7 +267,7 @@ int main()
 							ehealth = ehealth - dealt;
 							if(ehealth <= 0)
 							{
-								test = "winfight";
+								test = winfight;
 								break;
 							}
 							else
@@ -284,13 +284,13 @@ int main()
 							phealth = phealth - endealt;
 							if((phealth <= 0)&& (lives <= 0))
 							{
-								test = "gameover";
+								test = gameover;
 								break;
 							}
 							if((phealth <= 0)&&(lives >0))
 							{
 								lives -= 1;
-								test = "weapon_choice";
+								test = weapon_choice;
 								break;
 							}
 							else
@@ -309,11 +309,11 @@ int main()
 					courage -=1;
 					if (courage <=0)
 					{
-						test = "gameover";
+						test = gameover;
 						break;
 					}
 				}
-				test = "enemymake";
+				test = enemymake;
 				break;
 			}
 			case fight3://fight strong enemy
@@ -338,7 +338,7 @@ int main()
 							ehealth = ehealth - dealt;
 							if(ehealth <= 0)
 							{
-								test = "winfight";
+								test = winfight;
 								break;
 							}
 							else
@@ -355,13 +355,13 @@ int main()
 							phealth = phealth - endealt;
 							if((phealth <= 0)&& (lives <= 0))
 							{
-								test = "gameover";
+								test = gameover;
 								break;
 							}
 							if((phealth <= 0)&&(lives >0))
 							{
 								lives -= 1;
-								test = "weapon_choice";
+								test = weapon_choice;
 								break;
 							}
 							else
@@ -380,11 +380,11 @@ int main()
 					courage -=1;
 					if (courage <=0)
 					{
-						test = "gameover";
+						test = gameover;
 						break;
 					}
 				}
-				test = "enemymake";
+				test = enemymake;
 				break;
 			}
 			case boss://fight boss, after 3rd time fighting him will win game
@@ -418,13 +418,13 @@ int main()
 						phealth = phealth - 10;
 						if((phealth <= 0)&& (lives <= 0))
 						{
-							test = "gameover";
+							test = gameover;
 							break;
 						}
 						if((phealth <= 0)&&(lives > 0))
 						{
 							lives -=1;
-							test = "weapon_choice";
+							test = weapon_choice;
 							break;
 						}
 						else
@@ -440,12 +440,12 @@ int main()
 						{
 							if(bosscount == 3)
 							{
-								test = "victory";
+								test = victory;
 								break;
 							}
 							else
 							{
-								test = "winfight";
+								test = winfight;
 								break;
 							}
 						}
@@ -461,14 +461,14 @@ int main()
 						if((phealth <= 0)&&(lives <= 0))
 						{
 							cout << "The boss has finished you off" << endl;
-							test = "gameover";
+							test = gameover;
 							break;
 						}
 						if((phealth <= 0)&&(lives > 0))
 						{
 							lives -= 1;
 							cout << "The boss has finished you off" << endl;
-							test = "weapon_choice";
+							test = weapon_choice;
 							break;
 						}
 						else
@@ -481,13 +481,13 @@ int main()
 								if(bosscount == 3)
 								{
 									cout << "You finished off the boss" << endl;
-									test = "victory";
+									test = victory;
 									break;
 								}
 								else
 								{
 									cout << "You finished off the boss" << endl;
-									test = "winfight";
+									test = winfight;
 									break;
 								}
 							}
@@ -498,6 +498,7 @@ int main()
 						}
 					}
 				}
+				test = enemymake;
 				break;
 			}
 			case winfight://after winning a fight can possibly level up
@@ -513,7 +514,7 @@ int main()
 					cout << "Congradulations you managed to level up." << endl;
 					cout << "You are now level " << playerlvl << endl;
 				}
-				test = "enemymake";
+				test = enemymake;
 				break;
 
 			}
@@ -523,14 +524,14 @@ int main()
 				{
 					cout << "You lost your last live." << endl;
 					cout << "GAME OVER" << endl;
-					test = "";
+					test = empty;
 					break;
 				}
 				else
 				{
 					cout << "Your choices were too much of a burden." << endl;
 					cout << "GAME OVER" << endl;
-				test = "";
+				test = empty;
 				break;
 				}
 			}
@@ -538,7 +539,7 @@ int main()
 			{
 				cout << "Congradulations you beat the final boss" << endl;
 				cout << "Your choices lead you to victory. " << endl;
-				test = "";
+				test = empty;
 			}
 
 		}
