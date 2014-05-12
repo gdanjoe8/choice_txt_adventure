@@ -42,501 +42,505 @@ int main()
 	string test = "intro";
 	while(test != "")
 	{
-	switch(test)
-	{
-		case "intro"://introduction case
+		switch(test)
 		{
-			cout << "Welcome to Choice" << endl;
-			cout << "A game where you will have to make choices" << endl;
-			cout << "Choose: boy or girl?" << endl;
-			cin >> BOG;
-			cout << "Choose a name:" << endl;
-			cin >> pinput;
-			player1.setP_Name(pinput);
-			case = "weapon_choice";
-			break;
-		}
+			case "intro"://introduction case
+			{
+				cout << "Welcome to Choice" << endl;
+				cout << "A game where you will have to make choices" << endl;
+				cout << "Choose: boy or girl?" << endl;
+				cin >> BOG;
+				cout << "Choose a name:" << endl;
+				cin >> pinput;
+				player1.setP_Name(pinput);
+				case = "weapon_choice";
+				break;
+			}
 
-		case "weapon_choice"://player chooses weapon and recieves base stats for game
-		{
-			cout << "Choose: pistols, shotgun, rifle, or crossbow" << endl;
-			cin >> pinput2;
-			while((pinput2 != "pistols") || (pinput2 != "shotgun")||(pinput2 != "rifle")||(pinput2 != "crossbow"))
+			case "weapon_choice"://player chooses weapon and recieves base stats for game
 			{
 				cout << "Choose: pistols, shotgun, rifle, or crossbow" << endl;
-				cin >>pinput2;
-			}
-			if (pinput2 == "pistols")
-			{
-				player1.setP_Power(4);
-				player1.setP_Accuracy(3);
-				player1.setP_Agility(10);
-			}
-			if(pinput2 == "shotgun")
-			{
-				player1.setP_Power(10);
-				player1.setP_Accuracy(4);
-				player1.setP_Agility(2);
-			}
-			if(pinput2 == "rifle")
-			{
-				player1.setP_Power(6);
-				player1.setP_Accuracy(7);
-				player1.setP_Agility(8);
-			}
-			if(pinput2 == "crossbow")
-			{
-				player1.setP_Power(5);
-				player1.setP_Accuracy(10);
-				player1.setP_Agility(3);
-			}
-			test = "enemymake";
-			break;
-		}
-
-		case "enemymake"://randomly pick between weak, medium, and strong enemy
-		{
-			if((playerlvl == 10)||(playerlvl == 18)||(playerlvl ==25))
-			{
-				test = "boss";
-				break;
-			}
-			int m = random(playerlvl);
-			if((m >= 1)&&(m < 10))
-			{
-				test = "enemy1";
-				break;
-			}
-			if((m > 10)&&(m < 18))
-			{
-				test = "enemy2";
-				break;
-			}
-			if((m > 18)&&(m < 25))
-			{
-				test = "enemy3";
-				break;
-			}
-		}
-		case "enemy1"://create weak enemy
-		{
-			int randstat = random(1);
-			if(randstat == 0)
-			{
-				bandit.setP_Agility(player1.getP_Agility() - 1);
-				bandit.setP_Power(player1.getP_Power() - 1);
-			}	bandit.setP_Accuracy(player1.getP_Accuracy() - 1);
-			else if(randstat == 1)
-			{
-				bandit.setP_Agility(player1.getP_Agility() + 1);
-				bandit.setP_Power(player1.getP_Power() + 1);
-				bandit.setP_Accurcay(player1.getP_Accuracy() + 1);
-			}
-			test = "fight1";
-			break;
-		}
-		case "enemy2"://create medium enemy
-		{
-			int randchck = random(1);
-			int ranstat = random(5);
-			if(randchck == 0)
-			{
-				bounty_hunter.setP_Agility(player1.getP_Agility() - randstat);
-				bounty_hunter.setP_Power(player1.getP_Power() - randstat);
-				bounty_hunter.setP_Accuracy(player1.getP_Accuracy() - randstat);
-			}
-			else if(randchck == 1)
-			{
-				bounty_hunter.setP_Agility(player1.getP_Agility() + randstat);
-				bounty_hunter.setP_Power(player1.getP_Power() + randstat);
-				bountyhunter.setP_Accurcay(player1.getP_Accuracy() + randstat);
-			}
-			test = "fight2";
-			break;
-		}
-		case "enemy3"://create strong enemy
-		{
-			int randchck = random(1);
-			int ranstat = random(8);
-			if(randchck == 0)
-			{
-				hitman.seP_tAgility(player1.getP_Agility() - randstat);
-				hitman.setP_Power(player1.getP_Power() - randstat);
-				hitman.setP_Accuracy(player1.getP_Accuracy() - randstat);
-			}
-			else if(randchck == 1)
-			{
-				hitman.setP_Agility(player1.getP_Agility() + randstat);
-				hitman.setP_Power(player1.getP_Power() + randstat);
-				hitman.setP_Accurcay(player1.getP_Accuracy() + randstat);
-			}
-			test = "fight3";
-			break;
-		}
-		case "fight1"://fight against weak enemy
-		{
-			cout << "You have encountered a bandit" << endl;
-			cout << "Choose: fight or run" << endl;
-			cin >> pinput2;
-			while((pinput2 != "fight")||(pinput2 != "run"))
-			{
-				cout << "Choose: fight or run" << endl;
 				cin >> pinput2;
-			}
-			if(pinput2 == "fight")
-			{
-				int phealth = 100;
-				int ehealth = 100;
-				while((phealth >= 0) ||(ehealth >= 0))
+				while((pinput2 != "pistols") || (pinput2 != "shotgun")||(pinput2 != "rifle")||(pinput2 != "crossbow"))
 				{
-					if(player1.getP_Agility() >  bandit.getP_Agility())
-					{
-						int dealt = damage(player1.getP_Power(), bandit.getP_Power());
-						ehealth = ehealth - dealt;
-						if(ehealth <= 0)
-						{
-							test = "winfight";
-							break;
-						}
-						else
-						{
-							cout << "You dealt damage." << "The bandit has " << ehealth << " health left" << endl;
-							int edealt = damage(bandit.getP_Power(), player1.getP_Power());
-							phealth = phealth - edealt;
-							cout << "The bandit dealt damage." << "You have " << phealth << " health left" << endl;
-						}
-					}
-					else if(player1.getP_Agility() <= bandit.getP_Agility())
-					{
-						int endealt = damage(bandit.getP_Power(), player1.getP_Power());
-						phealth = phealth - endealt;
-						if((phealth <= 0)&& (lives <= 0))
-						{
-							test = "gameover";
-							break;
-						}
-						if((phealth <= 0)&&(lives >0))
-						{
-							lives -= 1;
-							test = "weapon_choice";
-							break;
-						else
-						{
-							cout << "The bandit dealt damage." << "You have " << phealth << " health left" << endl;
-							int pdealt = damage(player1.getP_Power(), bandit.getP_Power());
-							ehealth = ehealth - pdealt;
-							cout << "You dealt damage." << "The bandit has " << ehealth << " health left" << endl;
-						}
-					}
+					cout << "Choose: pistols, shotgun, rifle, or crossbow" << endl;
+					cin >>pinput2;
 				}
+				if (pinput2 == "pistols")
+				{
+					player1.setP_Power(4);
+					player1.setP_Accuracy(3);
+					player1.setP_Agility(10);
+				}
+				if(pinput2 == "shotgun")
+				{
+					player1.setP_Power(10);
+					player1.setP_Accuracy(4);
+					player1.setP_Agility(2);
+				}
+				if(pinput2 == "rifle")
+				{
+					player1.setP_Power(6);
+					player1.setP_Accuracy(7);
+					player1.setP_Agility(8);
+				}
+				if(pinput2 == "crossbow")
+				{
+					player1.setP_Power(5);
+					player1.setP_Accuracy(10);
+					player1.setP_Agility(3);
+				}
+				test = "enemymake";
 				break;
 			}
-			if(pinput2 == "run")
+			case "enemymake"://randomly pick between weak, medium, and strong enemy
 			{
-				courage -=1;
-				if (courage <=0)
+				if((playerlvl == 10)||(playerlvl == 18)||(playerlvl ==25))
 				{
-					test = "gameover";
+					test = "boss";
+					break;
+				}
+				int m = random(playerlvl);
+				if((m >= 1)&&(m < 10))
+				{
+					test = "enemy1";
+					break;
+				}
+				if((m > 10)&&(m < 18))
+				{
+					test = "enemy2";
+					break;
+				}
+				if((m > 18)&&(m < 25))
+				{
+					test = "enemy3";
 					break;
 				}
 			}
-			test = "enemymake";
-			break;
-		}
-		case "fight2"://fight against medium enemy
-		{
-			cout << "You have encountered a bounty hunter" << endl;
-			cout << "Choose: fight or run" << endl;
-			cin >> pinput2;
-			while((pinput2 != "fight")||(pinput2 != "run"))
+			case "enemy1"://create weak enemy
 			{
-				cout << "Choose: fight or run" << endl;
-				cin >> pinput2;
-			}
-			if(pinput2 == "fight")
-			{
-				int phealth = 100;
-				int ehealth = 100;
-				while((phealth >= 0) ||(ehealth >= 0))
+				int randstat = random(1);
+				if(randstat == 0)
 				{
-					if(player1.getP_Agility() >  bounty_hunter.getP_Agility())
-					{
-						int dealt = damage(player1.getP_Power(), bounty_hunter.getP_Power());
-						ehealth = ehealth - dealt;
-						if(ehealth <= 0)
-						{
-							test = "winfight";
-							break;
-						}
-						else
-						{
-							cout << "You dealt damage." << "The bounty hunter has " << ehealth << " health left" << endl;
-							int edealt = damage(bounty_hunter.getP_Power(), player1.getP_Power());
-							phealth = phealth - edealt;
-							cout << "The bounty hunter dealt damage." << "You have " << phealth << " health left" << endl;
-						}
-					}
-					else if(player1.getP_Agility() <= bounty_hunter.getP_Agility())
-					{
-						int endealt = damage(bounty_hunter.getP_Power(), player1.getP_Power());
-						phealth = phealth - endealt;
-						if((phealth <= 0)&& (lives <= 0))
-						{
-							test = "gameover";
-							break;
-						}
-						if((phealth <= 0)&&(lives >0))
-						{
-							lives -= 1;
-							test = "weapon_choice";
-							break;
-						else
-						{
-							cout << "The bounty hunter dealt damage." << "You have " << phealth << " health left" << endl;
-							int pdealt = damage(player1.getP_Power(), bounty_hunter.getP_Power());
-							ehealth = ehealth - pdealt;
-							cout << "You dealt damage." << "The bounty hunter has " << ehealth << " health left" << endl;
-						}
-					}
+					bandit.setP_Agility(player1.getP_Agility() - 1);
+					bandit.setP_Power(player1.getP_Power() - 1);
+					bandit.setP_Accuracy(player1.getP_Accuracy() - 1);
 				}
+				else if(randstat == 1)
+				{
+					bandit.setP_Agility(player1.getP_Agility() + 1);
+					bandit.setP_Power(player1.getP_Power() + 1);
+					bandit.setP_Accurcay(player1.getP_Accuracy() + 1);
+				}
+				test = "fight1";
 				break;
 			}
-			if(pinput2 == "run")
+			case "enemy2"://create medium enemy
 			{
-				courage -=1;
-				if (courage <=0)
+				int randchck = random(1);
+				int ranstat = random(5);
+				if(randchck == 0)
 				{
-					test = "gameover";
-					break;
+					bounty_hunter.setP_Agility(player1.getP_Agility() - randstat);
+					bounty_hunter.setP_Power(player1.getP_Power() - randstat);
+					bounty_hunter.setP_Accuracy(player1.getP_Accuracy() - randstat);
 				}
-			}
-			test = "enemymake";
-			break;
-		}
-		case "fight3"://fight strong enemy
-		{
-			cout << "You have encountered a hitman" << endl;
-			cout << "Choose: fight or run" << endl;
-			cin >> pinput2;
-			while((pinput2 != "fight")||(pinput2 != "run"))
-			{
-				cout << "Choose: fight or run" << endl;
-				cin >> pinput2;
-			}
-			if(pinput2 == "fight")
-			{
-				int phealth = 100;
-				int ehealth = 100;
-				while((phealth >= 0)||(ehealth >= 0))
+				else if(randchck == 1)
 				{
-					if(player1.getP_Agility() >  hitman.getP_Agility())
-					{
-						int dealt = damage(player1.getP_Power(), hitman.getP_Power());
-						ehealth = ehealth - dealt;
-						if(ehealth <= 0)
-						{
-							test = "winfight";
-							break;
-						}
-						else
-						{
-							cout << "You dealt damage." << "The hitman has " << ehealth << " health left" << endl;
-							int edealt = damage(hitman.getP_Power(), player1.getP_Power());
-							phealth = phealth - edealt;
-							cout << "The hitman dealt damage." << "You have " << phealth << " health left" << endl;
-						}
-					}
-					else if(player1.getP_Agility() <= hitman.getP_Agility())
-					{
-						int endealt = damage(hitman.getP_Power(), player1.getP_Power());
-						phealth = phealth - endealt;
-						if((phealth <= 0)&& (lives <= 0))
-						{
-							test = "gameover";
-							break;
-						}
-						if((phealth <= 0)&&(lives >0))
-						{
-							lives -= 1;
-							test = "weapon_choice";
-							break;
-						else
-						{
-							cout << "The hitman dealt damage." << "You have " << phealth << " health left" << endl;
-							int pdealt = damage(player1.getP_Power(), hitman.getP_Power());
-							ehealth = ehealth - pdealt;
-							cout << "You dealt damage." << "The hitman has " << ehealth << " health left" << endl;
-						}
-					}
+					bounty_hunter.setP_Agility(player1.getP_Agility() + randstat);
+					bounty_hunter.setP_Power(player1.getP_Power() + randstat);
+					bountyhunter.setP_Accurcay(player1.getP_Accuracy() + randstat);
 				}
+				test = "fight2";
 				break;
 			}
-			if(pinput2 == "run")
+			case "enemy3"://create strong enemy
 			{
-				courage -=1;
-				if (courage <=0)
+				int randchck = random(1);
+				int ranstat = random(8);
+				if(randchck == 0)
 				{
-					test = "gameover";
+					hitman.seP_tAgility(player1.getP_Agility() - randstat);
+					hitman.setP_Power(player1.getP_Power() - randstat);
+					hitman.setP_Accuracy(player1.getP_Accuracy() - randstat);
+				}
+				else if(randchck == 1)
+				{
+					hitman.setP_Agility(player1.getP_Agility() + randstat);
+					hitman.setP_Power(player1.getP_Power() + randstat);
+					hitman.setP_Accurcay(player1.getP_Accuracy() + randstat);
+				}
+				test = "fight3";
+				break;
+			}
+			case "fight1"://fight against weak enemy
+			{
+				cout << "You have encountered a bandit" << endl;
+				cout << "Choose: fight or run" << endl;
+				cin >> pinput2;
+				while((pinput2 != "fight")||(pinput2 != "run"))
+				{
+					cout << "Choose: fight or run" << endl;
+					cin >> pinput2;
+				}
+				if(pinput2 == "fight")
+				{
+					int phealth = 100;
+					int ehealth = 100;
+					while((phealth >= 0) ||(ehealth >= 0))
+					{
+						if(player1.getP_Agility() >  bandit.getP_Agility())
+						{
+							int dealt = damage(player1.getP_Power(), bandit.getP_Power());
+							ehealth = ehealth - dealt;
+							if(ehealth <= 0)
+							{
+								test = "winfight";
+								break;
+							}
+							else
+							{
+								cout << "You dealt damage." << "The bandit has " << ehealth << " health left" << endl;
+								int edealt = damage(bandit.getP_Power(), player1.getP_Power());
+								phealth = phealth - edealt;
+								cout << "The bandit dealt damage." << "You have " << phealth << " health left" << endl;
+							}
+						}
+						else if(player1.getP_Agility() <= bandit.getP_Agility())
+						{
+							int endealt = damage(bandit.getP_Power(), player1.getP_Power());
+							phealth = phealth - endealt;
+							if((phealth <= 0)&& (lives <= 0))
+							{
+								test = "gameover";
+								break;
+							}
+							if((phealth <= 0)&&(lives >0))
+							{
+								lives -= 1;
+								test = "weapon_choice";
+								break;
+							}
+							else
+							{
+								cout << "The bandit dealt damage." << "You have " << phealth << " health left" << endl;
+								int pdealt = damage(player1.getP_Power(), bandit.getP_Power());
+								ehealth = ehealth - pdealt;
+								cout << "You dealt damage." << "The bandit has " << ehealth << " health left" << endl;
+							}
+						}
+					}
 					break;
 				}
-			}
-			test = "enemymake";
-			break;
-		}
-		case "boss"://fight boss, after 3rd time fighting him will win game
-		{
-			bosscount += 1;
-			int phealth = 100;
-			int bhealth = 200;
-			int input;
-			bstat = random(15);
-			boss.setP_Power(player1.getP_Power() + bstat);
-			boss.setP_Accuracy(player1.getP_Accuracy() + bstat);
-			boss.setP_Agility(player1.getP_Agility() + bstat);
-			while((phealth <= 0) || (bhealth <= 0))
-			{
-				cout << "Choose: 1, 2, 3, 4, or 5 " << endl;
-				cin >> pinput2;
-				while((input != 1)||(input != 2)||(input != 3)||(input != 4)||(input != 5))
+				if(pinput2 == "run")
 				{
-					cout << "Choose: 1 2 3 4 5 " << endl;
-					cin >> input;
-				}
-				int power = random(5);
-				int power2 = random(5);
-				while(power == power2)
-				{
-					power2 = random(5);
-				}
-				if(input = power)
-				{
-					cout << "Bad Choice: You take damage" << endl;
-					phealth = phealth - 10;
-					if((phealth <= 0)&& (lives <= 0))
+					courage -=1;
+					if (courage <=0)
 					{
 						test = "gameover";
 						break;
 					}
-					if((phealth <= 0)&&(lives > 0))
+				}
+				test = "enemymake";
+				break;
+			}
+			case "fight2"://fight against medium enemy
+			{
+				cout << "You have encountered a bounty hunter" << endl;
+				cout << "Choose: fight or run" << endl;
+				cin >> pinput2;
+				while((pinput2 != "fight")||(pinput2 != "run"))
+				{
+					cout << "Choose: fight or run" << endl;
+					cin >> pinput2;
+				}
+				if(pinput2 == "fight")
+				{
+					int phealth = 100;
+					int ehealth = 100;
+					while((phealth >= 0) ||(ehealth >= 0))
 					{
-						lives -=1;
-						test = "weapon_choice";
+						if(player1.getP_Agility() >  bounty_hunter.getP_Agility())
+						{
+							int dealt = damage(player1.getP_Power(), bounty_hunter.getP_Power());
+							ehealth = ehealth - dealt;
+							if(ehealth <= 0)
+							{
+								test = "winfight";
+								break;
+							}
+							else
+							{
+								cout << "You dealt damage." << "The bounty hunter has " << ehealth << " health left" << endl;
+								int edealt = damage(bounty_hunter.getP_Power(), player1.getP_Power());
+								phealth = phealth - edealt;
+								cout << "The bounty hunter dealt damage." << "You have " << phealth << " health left" << endl;
+							}
+						}
+						else if(player1.getP_Agility() <= bounty_hunter.getP_Agility())
+						{
+							int endealt = damage(bounty_hunter.getP_Power(), player1.getP_Power());
+							phealth = phealth - endealt;
+							if((phealth <= 0)&& (lives <= 0))
+							{
+								test = "gameover";
+								break;
+							}
+							if((phealth <= 0)&&(lives >0))
+							{
+								lives -= 1;
+								test = "weapon_choice";
+								break;
+							}
+							else
+							{
+								cout << "The bounty hunter dealt damage." << "You have " << phealth << " health left" << endl;
+								int pdealt = damage(player1.getP_Power(), bounty_hunter.getP_Power());
+								ehealth = ehealth - pdealt;
+								cout << "You dealt damage." << "The bounty hunter has " << ehealth << " health left" << endl;
+							}
+						}
+					}
+					break;
+				}
+				if(pinput2 == "run")
+				{
+					courage -=1;
+					if (courage <=0)
+					{
+						test = "gameover";
 						break;
 					}
-					else
+				}
+				test = "enemymake";
+				break;
+			}
+			case "fight3"://fight strong enemy
+			{
+				cout << "You have encountered a hitman" << endl;
+				cout << "Choose: fight or run" << endl;
+				cin >> pinput2;
+				while((pinput2 != "fight")||(pinput2 != "run"))
+				{
+					cout << "Choose: fight or run" << endl;
+					cin >> pinput2;
+				}
+				if(pinput2 == "fight")
+				{
+					int phealth = 100;
+					int ehealth = 100;
+					while((phealth >= 0)||(ehealth >= 0))
 					{
-						cout << "You have " << phealth << " health left" << endl;
+						if(player1.getP_Agility() >  hitman.getP_Agility())
+						{
+							int dealt = damage(player1.getP_Power(), hitman.getP_Power());
+							ehealth = ehealth - dealt;
+							if(ehealth <= 0)
+							{
+								test = "winfight";
+								break;
+							}
+							else
+							{
+								cout << "You dealt damage." << "The hitman has " << ehealth << " health left" << endl;
+								int edealt = damage(hitman.getP_Power(), player1.getP_Power());
+								phealth = phealth - edealt;
+								cout << "The hitman dealt damage." << "You have " << phealth << " health left" << endl;
+							}
+						}
+						else if(player1.getP_Agility() <= hitman.getP_Agility())
+						{
+							int endealt = damage(hitman.getP_Power(), player1.getP_Power());
+							phealth = phealth - endealt;
+							if((phealth <= 0)&& (lives <= 0))
+							{
+								test = "gameover";
+								break;
+							}
+							if((phealth <= 0)&&(lives >0))
+							{
+								lives -= 1;
+								test = "weapon_choice";
+								break;
+							}
+							else
+							{
+								cout << "The hitman dealt damage." << "You have " << phealth << " health left" << endl;
+								int pdealt = damage(player1.getP_Power(), hitman.getP_Power());
+								ehealth = ehealth - pdealt;
+								cout << "You dealt damage." << "The hitman has " << ehealth << " health left" << endl;
+							}
+						}
+					}
+					break;
+				}
+				if(pinput2 == "run")
+				{
+					courage -=1;
+					if (courage <=0)
+					{
+						test = "gameover";
+						break;
 					}
 				}
-				if(input = power2)
+				test = "enemymake";
+				break;
+			}
+			case "boss"://fight boss, after 3rd time fighting him will win game
+			{
+				bosscount += 1;
+				int phealth = 100;
+				int bhealth = 200;
+				int input;
+				bstat = random(15);
+				boss.setP_Power(player1.getP_Power() + bstat);
+				boss.setP_Accuracy(player1.getP_Accuracy() + bstat);
+				boss.setP_Agility(player1.getP_Agility() + bstat);
+				while((phealth <= 0) || (bhealth <= 0))
 				{
-					cout << "Good Choice: The boss takes damage" << endl;
-					bhealth = bhealth - 10;
-					if(bhealth <= 0 )
+					cout << "Choose: 1, 2, 3, 4, or 5 " << endl;
+					cin >> pinput2;
+					while((input != 1)||(input != 2)||(input != 3)||(input != 4)||(input != 5))
 					{
-						if(bosscount == 3)
+						cout << "Choose: 1 2 3 4 5 " << endl;
+						cin >> input;
+					}
+					int power = random(5);
+					int power2 = random(5);
+					while(power == power2)
+					{
+						power2 = random(5);
+					}
+					if(input = power)
+					{
+						cout << "Bad Choice: You take damage" << endl;
+						phealth = phealth - 10;
+						if((phealth <= 0)&& (lives <= 0))
 						{
-							test = "victory";
+							test = "gameover";
+							break;
+						}
+						if((phealth <= 0)&&(lives > 0))
+						{
+							lives -=1;
+							test = "weapon_choice";
 							break;
 						}
 						else
 						{
-							test = "winfight";
-							break;
+							cout << "You have " << phealth << " health left" << endl;
 						}
 					}
-					else
+					if(input = power2)
 					{
-						cout << "The boss has " << bhealth << "health left" << endl;
-					}
-				}
-				else
-				{
-					int bdealt = damage(boss.getP_Power(), player1.getP_Power());
-					phealth -= bdealt;
-					if((phealth <= 0)&&(lives <= 0))
-					{
-						cout << "The boss has finished you off" << endl;
-						test = "gameover";
-						break;
-					}
-					if((phealth <= 0)&&(lives > 0))
-					{
-						lives -= 1;
-						cout << "The boss has finished you off" << endl;
-						test = "weapon_choice";
-						break;
-					else
-					{
-						cout << "The boss dealt damage. You have " << phealth << " health left" << endl;
-						int pdealt = damage(player1.getP_Power(), boss.getP_Power());
-						bhealth -= pdealt;
-						if(bhealth <= 0)
+						cout << "Good Choice: The boss takes damage" << endl;
+						bhealth = bhealth - 10;
+						if(bhealth <= 0 )
 						{
 							if(bosscount == 3)
 							{
-								cout << "You finished off the boss" << endl;
 								test = "victory";
 								break;
 							}
 							else
 							{
-								cout << "You finished off the boss" << endl;
 								test = "winfight";
 								break;
 							}
 						}
 						else
 						{
-							cout << "The boss takes damage.  It has " << bhealth << " health left" << endl;
+							cout << "The boss has " << bhealth << "health left" << endl;
+						}
+					}
+					else
+					{
+						int bdealt = damage(boss.getP_Power(), player1.getP_Power());
+						phealth -= bdealt;
+						if((phealth <= 0)&&(lives <= 0))
+						{
+							cout << "The boss has finished you off" << endl;
+							test = "gameover";
+							break;
+						}
+						if((phealth <= 0)&&(lives > 0))
+						{
+							lives -= 1;
+							cout << "The boss has finished you off" << endl;
+							test = "weapon_choice";
+							break;
+						}
+						else
+						{
+							cout << "The boss dealt damage. You have " << phealth << " health left" << endl;
+							int pdealt = damage(player1.getP_Power(), boss.getP_Power());
+							bhealth -= pdealt;
+							if(bhealth <= 0)
+							{
+								if(bosscount == 3)
+								{
+									cout << "You finished off the boss" << endl;
+									test = "victory";
+									break;
+								}
+								else
+								{
+									cout << "You finished off the boss" << endl;
+									test = "winfight";
+									break;
+								}
+							}
+							else
+							{
+								cout << "The boss takes damage.  It has " << bhealth << " health left" << endl;
+							}
 						}
 					}
 				}
-			}
-			break;
-		}
-		case "winfight"://after winning a fight can possibly level up
-		{
-			wincount += 1;
-			cout << "You win the fight.  You survive another day." << endl;
-			if ( wincount >= playerlvl)
-			{
-				playerlvl +=1;
-				player1.setP_Power(player1.getP_Power()+1);
-				player1.setP_Agility(player1.getP_Agility() +2);
-				player1.setP_Accuracy(player1.getP_Accuracy()+2);
-				cout << "Congradulations you managed to level up." << endl;
-				cout << "You are now level " << playerlvl << endl;
-			}
-			test = "enemymake";
-			break;
-
-		}
-		case "gameover"://gameover messages
-		{
-			if(lives <=0))
-			{
-				cout << "You lost your last live." << endl;
-				cout << "GAME OVER" << endl;
-				test = "";
 				break;
 			}
-			else
+			case "winfight"://after winning a fight can possibly level up
 			{
-				cout << "Your choices were too much of a burden." << endl;
-				cout << "GAME OVER" << endl;
-			test = "";
-			break;
-			}
-		}
-		case "victory"://victory condition messages
-		{
-			cout << "Congradulations you beat the final boss" << endl;
-			cout << "Your choices lead you to victory. " << endl;
-			test = "";
-		}
+				wincount += 1;
+				cout << "You win the fight.  You survive another day." << endl;
+				if ( wincount >= playerlvl)
+				{
+					playerlvl +=1;
+					player1.setP_Power(player1.getP_Power()+1);
+					player1.setP_Agility(player1.getP_Agility() +2);
+					player1.setP_Accuracy(player1.getP_Accuracy()+2);
+					cout << "Congradulations you managed to level up." << endl;
+					cout << "You are now level " << playerlvl << endl;
+				}
+				test = "enemymake";
+				break;
 
+			}
+			case "gameover"://gameover messages
+			{
+				if(lives <=0))
+				{
+					cout << "You lost your last live." << endl;
+					cout << "GAME OVER" << endl;
+					test = "";
+					break;
+				}
+				else
+				{
+					cout << "Your choices were too much of a burden." << endl;
+					cout << "GAME OVER" << endl;
+				test = "";
+				break;
+				}
+			}
+			case "victory"://victory condition messages
+			{
+				cout << "Congradulations you beat the final boss" << endl;
+				cout << "Your choices lead you to victory. " << endl;
+				test = "";
+			}
+
+		}
+	  }
+	return 0;
 	}
-   }
-return 0;
-}
