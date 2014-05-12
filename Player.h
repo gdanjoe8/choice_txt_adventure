@@ -20,4 +20,4 @@ public:
 	int getP_Agility();
 	int getP_Accuracy();
 	string getP_Name();
-}
+};
