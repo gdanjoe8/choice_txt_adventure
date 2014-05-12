@@ -123,14 +123,14 @@ int main()
 			int randstat = random(1);
 			if(randstat == 0)
 			{
-				bandit.setAgility(player1.getAgility() - 1);
-				bandit.setPower(player1.getPower() - 1);
-			}	bandit.setAccuracy(player1.getAccuracy() - 1);
+				bandit.setP_Agility(player1.getP_Agility() - 1);
+				bandit.setP_Power(player1.getP_Power() - 1);
+			}	bandit.setP_Accuracy(player1.getP_Accuracy() - 1);
 			else if(randstat == 1)
 			{
-				bandit.setAgility(player1.getAgility() + 1);
-				bandit.setPower(player1.getPower() + 1);
-				bandit.setAccurcay(player1.getAccuracy() + 1);
+				bandit.setP_Agility(player1.getP_Agility() + 1);
+				bandit.setP_Power(player1.getP_Power() + 1);
+				bandit.setP_Accurcay(player1.getP_Accuracy() + 1);
 			}
 			test = "fight1";
 			break;
@@ -141,15 +141,15 @@ int main()
 			int ranstat = random(5);
 			if(randchck == 0)
 			{
-				bounty_hunter.setAgility(player1.getAgility() - randstat);
-				bounty_hunter.setPower(player1.getPower() - randstat);
-				bounty_hunter.setAccuracy(player1.getAccuracy() - randstat);
+				bounty_hunter.setP_Agility(player1.getP_Agility() - randstat);
+				bounty_hunter.setP_Power(player1.getP_Power() - randstat);
+				bounty_hunter.setP_Accuracy(player1.getP_Accuracy() - randstat);
 			}
 			else if(randchck == 1)
 			{
-				bounty_hunter.setAgility(player1.getAgility() + randstat);
-				bounty_hunter.setPower(player1.getPower() + randstat);
-				bountyhunter.setAccurcay(player1.getAccuracy() + randstat);
+				bounty_hunter.setP_Agility(player1.getP_Agility() + randstat);
+				bounty_hunter.setP_Power(player1.getP_Power() + randstat);
+				bountyhunter.setP_Accurcay(player1.getP_Accuracy() + randstat);
 			}
 			test = "fight2";
 			break;
@@ -160,15 +160,15 @@ int main()
 			int ranstat = random(8);
 			if(randchck == 0)
 			{
-				hitman.setAgility(player1.getAgility() - randstat);
-				hitman.setPower(player1.getPower() - randstat);
-				hitman.setAccuracy(player1.getAccuracy() - randstat);
+				hitman.seP_tAgility(player1.getP_Agility() - randstat);
+				hitman.setP_Power(player1.getP_Power() - randstat);
+				hitman.setP_Accuracy(player1.getP_Accuracy() - randstat);
 			}
 			else if(randchck == 1)
 			{
-				hitman.setAgility(player1.getAgility() + randstat);
-				hitman.setPower(player1.getPower() + randstat);
-				hitman.setAccurcay(player1.getAccuracy() + randstat);
+				hitman.setP_Agility(player1.getP_Agility() + randstat);
+				hitman.setP_Power(player1.getP_Power() + randstat);
+				hitman.setP_Accurcay(player1.getP_Accuracy() + randstat);
 			}
 			test = "fight3";
 			break;
@@ -189,9 +189,9 @@ int main()
 				int ehealth = 100;
 				while((phealth >= 0) ||(ehealth >= 0))
 				{
-					if(player1.getAgility() >  bandit.getAgility())
+					if(player1.getP_Agility() >  bandit.getP_Agility())
 					{
-						int dealt = damage(player1.getPower(), bandit.getPower());
+						int dealt = damage(player1.getP_Power(), bandit.getP_Power());
 						ehealth = ehealth - dealt;
 						if(ehealth <= 0)
 						{
@@ -201,14 +201,14 @@ int main()
 						else
 						{
 							cout << "You dealt damage." << "The bandit has " << ehealth << " health left" << endl;
-							int edealt = damage(bandit.getPower(), player1.getPower());
+							int edealt = damage(bandit.getP_Power(), player1.getP_Power());
 							phealth = phealth - edealt;
 							cout << "The bandit dealt damage." << "You have " << phealth << " health left" << endl;
 						}
 					}
-					else if(player1.getAgility() <= bandit.getAgility())
+					else if(player1.getP_Agility() <= bandit.getP_Agility())
 					{
-						int endealt = damage(bandit.getPower(), player1.getPower());
+						int endealt = damage(bandit.getP_Power(), player1.getP_Power());
 						phealth = phealth - endealt;
 						if((phealth <= 0)&& (lives <= 0))
 						{
@@ -223,7 +223,7 @@ int main()
 						else
 						{
 							cout << "The bandit dealt damage." << "You have " << phealth << " health left" << endl;
-							int pdealt = damage(player1.getPower(), bandit.getPower());
+							int pdealt = damage(player1.getP_Power(), bandit.getP_Power());
 							ehealth = ehealth - pdealt;
 							cout << "You dealt damage." << "The bandit has " << ehealth << " health left" << endl;
 						}
@@ -259,9 +259,9 @@ int main()
 				int ehealth = 100;
 				while((phealth >= 0) ||(ehealth >= 0))
 				{
-					if(player1.getAgility() >  bounty_hunter.getAgility())
+					if(player1.getP_Agility() >  bounty_hunter.getP_Agility())
 					{
-						int dealt = damage(player1.getPower(), bounty_hunter.getPower());
+						int dealt = damage(player1.getP_Power(), bounty_hunter.getP_Power());
 						ehealth = ehealth - dealt;
 						if(ehealth <= 0)
 						{
@@ -271,14 +271,14 @@ int main()
 						else
 						{
 							cout << "You dealt damage." << "The bounty hunter has " << ehealth << " health left" << endl;
-							int edealt = damage(bounty_hunter.getPower(), player1.getPower());
+							int edealt = damage(bounty_hunter.getP_Power(), player1.getP_Power());
 							phealth = phealth - edealt;
 							cout << "The bounty hunter dealt damage." << "You have " << phealth << " health left" << endl;
 						}
 					}
-					else if(player1.getAgility() <= bounty_hunter.getAgility())
+					else if(player1.getP_Agility() <= bounty_hunter.getP_Agility())
 					{
-						int endealt = damage(bounty_hunter.getPower(), player1.getPower());
+						int endealt = damage(bounty_hunter.getP_Power(), player1.getP_Power());
 						phealth = phealth - endealt;
 						if((phealth <= 0)&& (lives <= 0))
 						{
@@ -293,7 +293,7 @@ int main()
 						else
 						{
 							cout << "The bounty hunter dealt damage." << "You have " << phealth << " health left" << endl;
-							int pdealt = damage(player1.getPower(), bounty_hunter.getPower());
+							int pdealt = damage(player1.getP_Power(), bounty_hunter.getP_Power());
 							ehealth = ehealth - pdealt;
 							cout << "You dealt damage." << "The bounty hunter has " << ehealth << " health left" << endl;
 						}
@@ -329,9 +329,9 @@ int main()
 				int ehealth = 100;
 				while((phealth >= 0)||(ehealth >= 0))
 				{
-					if(player1.getAgility() >  hitman.getAgility())
+					if(player1.getP_Agility() >  hitman.getP_Agility())
 					{
-						int dealt = damage(player1.getPower(), hitman.getPower());
+						int dealt = damage(player1.getP_Power(), hitman.getP_Power());
 						ehealth = ehealth - dealt;
 						if(ehealth <= 0)
 						{
@@ -341,14 +341,14 @@ int main()
 						else
 						{
 							cout << "You dealt damage." << "The hitman has " << ehealth << " health left" << endl;
-							int edealt = damage(hitman.getPower(), player1.getPower());
+							int edealt = damage(hitman.getP_Power(), player1.getP_Power());
 							phealth = phealth - edealt;
 							cout << "The hitman dealt damage." << "You have " << phealth << " health left" << endl;
 						}
 					}
-					else if(player1.getAgility() <= hitman.getAgility())
+					else if(player1.getP_Agility() <= hitman.getP_Agility())
 					{
-						int endealt = damage(hitman.getPower(), player1.getPower());
+						int endealt = damage(hitman.getP_Power(), player1.getP_Power());
 						phealth = phealth - endealt;
 						if((phealth <= 0)&& (lives <= 0))
 						{
@@ -363,7 +363,7 @@ int main()
 						else
 						{
 							cout << "The hitman dealt damage." << "You have " << phealth << " health left" << endl;
-							int pdealt = damage(player1.getPower(), hitman.getPower());
+							int pdealt = damage(player1.getP_Power(), hitman.getP_Power());
 							ehealth = ehealth - pdealt;
 							cout << "You dealt damage." << "The hitman has " << ehealth << " health left" << endl;
 						}
@@ -390,9 +390,9 @@ int main()
 			int bhealth = 200;
 			int input;
 			bstat = random(15);
-			boss.setPower(player1.getPower() + bstat);
-			boss.setAccuracy(player1.getAccuracy() + bstat);
-			boss.setAgility(player1.getAgility() + bstat);
+			boss.setP_Power(player1.getP_Power() + bstat);
+			boss.setP_Accuracy(player1.getP_Accuracy() + bstat);
+			boss.setP_Agility(player1.getP_Agility() + bstat);
 			while((phealth <= 0) || (bhealth <= 0))
 			{
 				cout << "Choose: 1, 2, 3, 4, or 5 " << endl;
@@ -452,7 +452,7 @@ int main()
 				}
 				else
 				{
-					int bdealt = damage(boss.getPower(), player1.getPower());
+					int bdealt = damage(boss.getP_Power(), player1.getP_Power());
 					phealth -= bdealt;
 					if((phealth <= 0)&&(lives <= 0))
 					{
@@ -469,7 +469,7 @@ int main()
 					else
 					{
 						cout << "The boss dealt damage. You have " << phealth << " health left" << endl;
-						int pdealt = damage(player1.getPower(), boss.getPower());
+						int pdealt = damage(player1.getP_Power(), boss.getP_Power());
 						bhealth -= pdealt;
 						if(bhealth <= 0)
 						{
@@ -502,9 +502,9 @@ int main()
 			if ( wincount >= playerlvl)
 			{
 				playerlvl +=1;
-				player1.setPower(player1.getPower()+1);
-				player1.setAgility(player1.getAgility() +2);
-				player1.setAccuracy(player1.getAccuracy()+2);
+				player1.setP_Power(player1.getP_Power()+1);
+				player1.setP_Agility(player1.getP_Agility() +2);
+				player1.setP_Accuracy(player1.getP_Accuracy()+2);
 				cout << "Congradulations you managed to level up." << endl;
 				cout << "You are now level " << playerlvl << endl;
 			}
