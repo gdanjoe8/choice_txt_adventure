@@ -18,7 +18,7 @@ int random(int numb)//function for random numbers
 
 int damage(int ppower, int epower)//function for caclulation battle damage
 {
-	int dealt = abs(int((((ppower*0.6) - (epower*0.4))(random(5)))));
+	int dealt = abs((((ppower*(6/10)) - (epower*(4/10)))*(random(5))));
 	return dealt;
 }
 
