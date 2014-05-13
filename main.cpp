@@ -68,12 +68,19 @@ int main()
 	{
 		switch(test)
 		{
-			case intro://introduction case
+			case intro:/*introduction case*/
 			{
 				cout << "Welcome to Choice" << endl;
 				cout << "A game where you will have to make choices" << endl;
-				cout << "Choose: boy or girl?" << endl;
-				cin >> BOG;
+				while(BOG != "boy" || BOG != "girl")
+				{
+					cout << "Choose: boy or girl" << endl;
+					getline(cin,BOG);
+					if(BOG == "boy" || BOG == "girl")
+					{
+						break;
+					}
+				}
 				cout << "Choose a name:" << endl;
 				cin >> pinput;
 				player1.setP_Name(pinput);
@@ -98,9 +105,6 @@ int main()
 					test = weapon_choice;
 					break;
 				}
-			
-				test = enemymake;
-				break;
 			}
 			case enemymake://randomly pick between weak, medium, and strong enemy
 			{
@@ -186,7 +190,7 @@ int main()
 			{
 				cout << "You have encountered a bandit" << endl;
 				cout << "Choose: fight or run" << endl;
-				cin >> pinput2;
+				getline(cin,pinput2);
 				while((pinput2 != "fight")||(pinput2 != "run"))
 				{
 					cout << "Choose: fight or run" << endl;
@@ -220,6 +224,9 @@ int main()
 							if((phealth <= 0)&& (lives <= 0))
 							{
 								test = gameover;
+							if(ehealth <= 0)
+							{
+								test = winfight;
 								break;
 							}
 							int endealt = damage(bandit.getP_Power(), player1.getP_Power());
@@ -262,7 +269,7 @@ int main()
 			{
 				cout << "You have encountered a bounty hunter" << endl;
 				cout << "Choose: fight or run" << endl;
-				cin >> pinput2;
+				getline(cin,pinput2);
 				while((pinput2 != "fight")||(pinput2 != "run"))
 				{
 					cout << "Choose: fight or run" << endl;
@@ -338,7 +345,7 @@ int main()
 			{
 				cout << "You have encountered a hitman" << endl;
 				cout << "Choose: fight or run" << endl;
-				cin >> pinput2;
+				getline(cin,pinput2);
 				while((pinput2 != "fight")||(pinput2 != "run"))
 				{
 					cout << "Choose: fight or run" << endl;
@@ -427,6 +434,7 @@ int main()
 					while((input != 1)||(input != 2)||(input != 3)||(input != 4)||(input != 5))
 					{
 						cout << "Choose: 1, 2, 3, 4, or 5 " << endl;
+						cout << "Choose: 1 2 3 4 5 " << endl;
 						cin >> input;
 					}
 					int power = random(5);
@@ -521,6 +529,7 @@ int main()
 						}
 					}
 				}
+				test = enemymake;
 				break;
 			}
 			case winfight://after winning a fight can possibly level up
@@ -553,8 +562,8 @@ int main()
 				{
 					cout << "Your choices were too much of a burden." << endl;
 					cout << "GAME OVER" << endl;
-				test = empty;
-				break;
+					test = empty;
+					break;
 				}
 			}
 			case victory://victory condition messages
@@ -562,13 +571,14 @@ int main()
 				cout << "Congradulations " << player1.getP_Name() <<", you beat the final boss" << endl;
 				cout << "Your choices lead you to victory. " << endl;
 				test = empty;
+				break;
 			}
 			case empty:
 			{
 				cout << "Congradulations. Please recompile if you would like to play again." << endl;
 			}
-
 		}
 	  }
+	}
 	return 0;
 	}
