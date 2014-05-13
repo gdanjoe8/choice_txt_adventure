@@ -188,7 +188,7 @@ int main()
 				{
 					int phealth = 100;
 					int ehealth = 100;
-					while((phealth >= 0) ||(ehealth >= 0))
+					while((phealth > 0) ||(ehealth > 0))
 					{
 						if(player1.getP_Agility() >  bandit.getP_Agility())
 						{
@@ -264,7 +264,7 @@ int main()
 				{
 					int phealth = 100;
 					int ehealth = 100;
-					while((phealth >= 0) ||(ehealth >= 0))
+					while((phealth > 0) ||(ehealth > 0))
 					{
 						if(player1.getP_Agility() >  bounty_hunter.getP_Agility())
 						{
@@ -340,7 +340,7 @@ int main()
 				{
 					int phealth = 100;
 					int ehealth = 100;
-					while((phealth >= 0)||(ehealth >= 0))
+					while((phealth > 0)||(ehealth > 0))
 					{
 						if(player1.getP_Agility() >  hitman.getP_Agility())
 						{
@@ -412,7 +412,7 @@ int main()
 				boss.setP_Power(player1.getP_Power() + bstat);
 				boss.setP_Accuracy(player1.getP_Accuracy() + bstat);
 				boss.setP_Agility(player1.getP_Agility() + bstat);
-				while((phealth <= 0) || (bhealth <= 0))
+				while((phealth > 0) || (bhealth > 0))
 				{
 					cout << "Choose: 1, 2, 3, 4, or 5 " << endl;
 					cin >> pinput2;
