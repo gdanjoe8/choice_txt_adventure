@@ -414,10 +414,10 @@ int main()
 				while((phealth > 0) || (bhealth > 0))
 				{
 					cout << "Choose: 1, 2, 3, 4, or 5 " << endl;
-					cin >> pinput2;
+					cin >> input;
 					while((input != 1)||(input != 2)||(input != 3)||(input != 4)||(input != 5))
 					{
-						cout << "Choose: 1 2 3 4 5 " << endl;
+						cout << "Choose: 1, 2, 3, 4, or 5 " << endl;
 						cin >> input;
 					}
 					int power = random(5);
