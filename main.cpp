@@ -418,7 +418,7 @@ int main()
 				while((phealth > 0) || (bhealth > 0))
 				{
 					cout << "Choose: 1, 2, 3, 4, or 5 " << endl;
-					cin >> pinput2;
+					cin >> input;
 					while((input != 1)||(input != 2)||(input != 3)||(input != 4)||(input != 5))
 					{
 						cout << "Choose: 1 2 3 4 5 " << endl;
@@ -430,7 +430,7 @@ int main()
 					{
 						power2 = random(5);
 					}
-					if(input = power)
+					if(input == power)
 					{
 						cout << "Bad Choice: You take damage" << endl;
 						phealth = phealth - 10;
@@ -450,7 +450,7 @@ int main()
 							cout << "You have " << phealth << " health left" << endl;
 						}
 					}
-					if(input = power2)
+					if(input == power2)
 					{
 						cout << "Good Choice: The boss takes damage" << endl;
 						bhealth = bhealth - 10;
