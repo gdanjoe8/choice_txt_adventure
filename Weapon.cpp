@@ -11,6 +11,10 @@ Weapon::Weapon(string name, int power, int agil, int accur)
 		weapon_accuracy = accur;
 }
 
+string Weapon::getName() const
+{
+	return weapon_name;
+}
 void Weapon::setPower(int power)
 {
         weapon_power = power;

@@ -1,10 +1,9 @@
-<<<<<<< HEAD
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include <cmath>
-#include "Weapon.cpp"
-#include "Player.cpp"
+#include <vector>
 #include "Weapon.h"
 #include "Player.h"
 
@@ -23,7 +22,30 @@ int damage(int ppower, int epower)//function for caclulation battle damage
 	int dealt = abs((((ppower*(6/10)) - (epower*(4/10)))*(random(5))));
 	return dealt;
 }
-
+string weaponLister(vector<Weapon> list)
+{
+	string weaponout;
+	for(auto it = list.begin(); it != list.end(); ++it)
+	{
+		weaponout += it->getName();
+		if(it+1 != list.end())
+		{
+			weaponout += ", ";
+		}
+		
+	}
+	return weaponout;
+}
+struct weaponnamepred{
+	string name;
+	weaponnamepred(string name){
+		this->name = name;
+	}
+	bool operator()(Weapon thing){
+		return thing.getName() == name;
+	}
+};
+		
 int main()
 {
 	Player player1("player1");//player object
@@ -31,6 +53,7 @@ int main()
 	Player bounty_hunter("bounty_hunter");
 	Player hitman("hitman");
 	Player boss("boss");
+	vector<Weapon> weaponlist = {Weapon("pistols",4, 10 , 3), Weapon("shotgun", 10, 2, 4), Weapon("rifle", 6, 8 ,7), Weapon("crossbow", 5, 3, 10)};
 	string BOG;//input strings
 	string pinput;
 	string pinput2;
@@ -60,37 +83,22 @@ int main()
 
 			case weapon_choice://player chooses weapon and recieves base stats for game
 			{
-				cout << "Choose: pistols, shotgun, rifle, or crossbow" << endl;
+				cout << "Choose:" << weaponLister(weaponlist) << endl;
 				cin >> pinput2;
-				while((pinput2 != "pistols") || (pinput2 != "shotgun")||(pinput2 != "rifle")||(pinput2 != "crossbow"))
+				auto it = find_if(weaponlist.begin(),weaponlist.end(),weaponnamepred(pinput2));
+				if(it != weaponlist.end())
 				{
-					cout << "Choose: pistols, shotgun, rifle, or crossbow" << endl;
-					cin >>pinput2;
+					player1.setP_Power(it->getPower());
+					player1.setP_Accuracy(it->getAccuracy());
+					player1.setP_Agility(it->getAgility());
+					
 				}
-				if (pinput2 == "pistols")
+				else
 				{
-					player1.setP_Power(4);
-					player1.setP_Accuracy(3);
-					player1.setP_Agility(10);
+					test = weapon_choice;
+					break;
 				}
-				if(pinput2 == "shotgun")
-				{
-					player1.setP_Power(10);
-					player1.setP_Accuracy(4);
-					player1.setP_Agility(2);
-				}
-				if(pinput2 == "rifle")
-				{
-					player1.setP_Power(6);
-					player1.setP_Accuracy(7);
-					player1.setP_Agility(8);
-				}
-				if(pinput2 == "crossbow")
-				{
-					player1.setP_Power(5);
-					player1.setP_Accuracy(10);
-					player1.setP_Agility(3);
-				}
+			
 				test = enemymake;
 				break;
 			}
@@ -554,6 +562,10 @@ int main()
 				cout << "Congradulations " << player1.getP_Name() <<", you beat the final boss" << endl;
 				cout << "Your choices lead you to victory. " << endl;
 				test = empty;
+			}
+			case empty:
+			{
+				cout << "Congradulations. Please recompile if you would like to play again." << endl;
 			}
 
 		}

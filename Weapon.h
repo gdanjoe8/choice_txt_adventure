@@ -18,6 +18,7 @@ public:
 	int getAgility();
 	void setAccuracy(int);
 	int getAccuracy();
+	string getName() const;
 
 };
 #endif
