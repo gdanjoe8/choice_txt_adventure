@@ -32,7 +32,7 @@ string weaponLister(vector<Weapon> list)
 		{
 			weaponout += ", ";
 		}
-		
+
 	}
 	return weaponout;
 }
@@ -45,7 +45,7 @@ struct weaponnamepred{
 		return thing.getName() == name;
 	}
 };
-		
+
 int main()
 {
 	Player player1("player1");//player object
@@ -98,7 +98,7 @@ int main()
 					player1.setP_Power(it->getPower());
 					player1.setP_Accuracy(it->getAccuracy());
 					player1.setP_Agility(it->getAgility());
-					
+
 				}
 				else
 				{
@@ -191,12 +191,12 @@ int main()
 				cout << "You have encountered a bandit" << endl;
 				cout << "Choose: fight or run" << endl;
 				getline(cin,pinput2);
-				while((pinput2 != "fight")||(pinput2 != "run"))
+				while((pinput2.length() != 5)||(pinput2.length() != 3))
 				{
 					cout << "Choose: fight or run" << endl;
 					cin >> pinput2;
 				}
-				if(pinput2 == "fight")
+				if(pinput2.length() == 5)
 				{
 					int phealth = 100;
 					int ehealth = 100;
@@ -253,7 +253,7 @@ int main()
 					}
 					break;
 				}
-				if(pinput2 == "run")
+				if(pinput2.length() == 3)
 				{
 					courage -=1;
 					if (courage <=0)
@@ -270,12 +270,12 @@ int main()
 				cout << "You have encountered a bounty hunter" << endl;
 				cout << "Choose: fight or run" << endl;
 				getline(cin,pinput2);
-				while((pinput2 != "fight")||(pinput2 != "run"))
+				while((pinput2.length() != 5)||(pinput2.length() != 3))
 				{
 					cout << "Choose: fight or run" << endl;
 					cin >> pinput2;
 				}
-				if(pinput2 == "fight")
+				if(pinput2.length() == 5)
 				{
 					int phealth = 100;
 					int ehealth = 100;
@@ -329,7 +329,7 @@ int main()
 					}
 					break;
 				}
-				if(pinput2 == "run")
+				if(pinput2.length() == 3)
 				{
 					courage -=1;
 					if (courage <=0)
@@ -346,12 +346,12 @@ int main()
 				cout << "You have encountered a hitman" << endl;
 				cout << "Choose: fight or run" << endl;
 				getline(cin,pinput2);
-				while((pinput2 != "fight")||(pinput2 != "run"))
+				while((pinput2.length() != 5)||(pinput2.length() != 3))
 				{
 					cout << "Choose: fight or run" << endl;
 					cin >> pinput2;
 				}
-				if(pinput2 == "fight")
+				if(pinput2.lenght() == 5)
 				{
 					int phealth = 100;
 					int ehealth = 100;
@@ -405,7 +405,7 @@ int main()
 					}
 					break;
 				}
-				if(pinput2 == "run")
+				if(pinput2.length() == 3)
 				{
 					courage -=1;
 					if (courage <=0)
