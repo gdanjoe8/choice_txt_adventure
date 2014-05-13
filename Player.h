@@ -1,6 +1,8 @@
-#include <sctring>
+#ifndef PLAYER_H
+#define PLAYER_H
+#include <string>
 
-using namespace std::
+using namespace std;
 
 class Player
 {
@@ -19,5 +21,6 @@ public:
 	int getP_Power();
 	int getP_Agility();
 	int getP_Accuracy();
-	int getP_Name();
-}
+	string getP_Name();
+};
+#endif

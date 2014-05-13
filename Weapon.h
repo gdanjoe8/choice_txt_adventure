@@ -1,6 +1,8 @@
+#ifndef WEAPON_H
+#define WEAPON_H
 #include <string>
 
-using namespace std::
+using namespace std;
 
 class Weapon {
 private:
@@ -12,9 +14,10 @@ public:
 	Weapon(string, int, int ,int);
 	void setPower(int);
 	int getPower();
-	void setAgility(int);eap
-	int getAgility(int);
+	void setAgility(int);
+	int getAgility();
 	void setAccuracy(int);
-	int getAccuracy(int);
+	int getAccuracy();
 
-}
+};
+#endif

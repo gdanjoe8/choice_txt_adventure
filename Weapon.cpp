@@ -1,4 +1,7 @@
 #include "Weapon.h"
+#include <string>
+
+using namespace std;
 
 Weapon::Weapon(string name, int power, int agil, int accur)
 {
