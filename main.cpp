@@ -9,7 +9,7 @@
 
 using namespace std;
 
-enum states{empty, intro, weapon_choice, enemymake, enemy1, enemy2, enemy3, boss, fight1, fight2, fight3, winfight, gameover, victory};
+enum states{empty, intro, weapon_choice, enemymake, enemy1, enemy2, enemy3, boss1, fight1, fight2, fight3, winfight, gameover, victory};
 
 //typedef enum{intro, weapon_choice, chck_encounter, encount_gen, event_gen, boss1, boss2, boss3, event1, event2, event3, easy_fight, mid_fight, hard_fight}
 int random(int numb)//function for random numbers
@@ -54,7 +54,7 @@ int main()
 				cout << "Choose a name:" << endl;
 				cin >> pinput;
 				player1.setP_Name(pinput);
-				case = weapon_choice;
+				test = weapon_choice;
 				break;
 			}
 			
@@ -98,7 +98,7 @@ int main()
 			{
 				if((playerlvl == 10)||(playerlvl == 18)||(playerlvl ==25))
 				{
-					test = boss;
+					test = boss1;
 					break;
 				}
 				int m = random(playerlvl);
@@ -131,7 +131,7 @@ int main()
 				{
 					bandit.setP_Agility(player1.getP_Agility() + 1);
 					bandit.setP_Power(player1.getP_Power() + 1);
-					bandit.setP_Accurcay(player1.getP_Accuracy() + 1);
+					bandit.setP_Accuracy(player1.getP_Accuracy() + 1);
 				}
 				test = fight1;
 				break;
@@ -150,7 +150,7 @@ int main()
 				{
 					bounty_hunter.setP_Agility(player1.getP_Agility() + randstat);
 					bounty_hunter.setP_Power(player1.getP_Power() + randstat);
-					bountyhunter.setP_Accurcay(player1.getP_Accuracy() + randstat);
+					bountyhunter.setP_Accuracy(player1.getP_Accuracy() + randstat);
 				}
 				test = fight2;
 				break;
@@ -161,7 +161,7 @@ int main()
 				int ranstat = random(8);
 				if(randchck == 0)
 				{
-					hitman.seP_tAgility(player1.getP_Agility() - randstat);
+					hitman.setP_tAgility(player1.getP_Agility() - randstat);
 					hitman.setP_Power(player1.getP_Power() - randstat);
 					hitman.setP_Accuracy(player1.getP_Accuracy() - randstat);
 				}
@@ -169,7 +169,7 @@ int main()
 				{
 					hitman.setP_Agility(player1.getP_Agility() + randstat);
 					hitman.setP_Power(player1.getP_Power() + randstat);
-					hitman.setP_Accurcay(player1.getP_Accuracy() + randstat);
+					hitman.setP_Accuracy(player1.getP_Accuracy() + randstat);
 				}
 				test = fight3;
 				break;
