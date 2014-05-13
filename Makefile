@@ -6,3 +6,4 @@ Player.o: Player.cpp
 	clang -c -o Player.o Player.cpp
 Weapon.o: Weapon.cpp
 	clang -c -o Weapon.o Weapon.cpp
+

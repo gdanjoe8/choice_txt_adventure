@@ -6,10 +6,10 @@ using namespace std;
 
 class Weapon {
 private:
-	string weapon_name;
-	int weapon_power;
-	int weapon_agility;
-	int weapon_accuracy;
+        string weapon_name;
+        int weapon_power;
+        int weapon_agility;
+        int weapon_accuracy;
 public:
 	Weapon(string, int, int ,int);
 	void setPower(int);
