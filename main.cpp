@@ -2,8 +2,6 @@
 #include <string>
 #include <cstdlib>
 #include <cmath>
-#include "Weapon.cpp"
-#include "Player.cpp"
 #include "Weapon.h"
 #include "Player.h"
 
@@ -45,12 +43,17 @@ int main()
 	{
 		switch(test)
 		{
-			case intro://introduction case
+			case intro:/*introduction case*/
 			{
 				cout << "Welcome to Choice" << endl;
 				cout << "A game where you will have to make choices" << endl;
-				cout << "Choose: boy or girl?" << endl;
-				cin >> BOG;
+				while(BOG != "boy" || BOG != "girl")
+				{
+					cout << "Choose: boy or girl?" << endl;
+					getline(cin,BOG);
+					if(BOG == "boy" || BOG == "girl")
+						break;
+				}
 				cout << "Choose a name:" << endl;
 				cin >> pinput;
 				player1.setP_Name(pinput);
