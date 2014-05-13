@@ -407,7 +407,7 @@ int main()
 				int phealth = 100;
 				int bhealth = 200;
 				int input;
-				bstat = random(15);
+				int bstat = random(15);
 				boss.setP_Power(player1.getP_Power() + bstat);
 				boss.setP_Accuracy(player1.getP_Accuracy() + bstat);
 				boss.setP_Agility(player1.getP_Agility() + bstat);
@@ -426,7 +426,7 @@ int main()
 					{
 						power2 = random(5);
 					}
-					if(input = power)
+					if(input == power)
 					{
 						cout << "Bad Choice: You take damage" << endl;
 						phealth = phealth - 10;
@@ -446,7 +446,7 @@ int main()
 							cout << "You have " << phealth << " health left" << endl;
 						}
 					}
-					if(input = power2)
+					if(input == power2)
 					{
 						cout << "Good Choice: The boss takes damage" << endl;
 						bhealth = bhealth - 10;
@@ -533,7 +533,7 @@ int main()
 			}
 			case gameover://gameover messages
 			{
-				if(lives <=0))
+				if(lives <=0)
 				{
 					cout << "You lost your last live." << endl;
 					cout << "GAME OVER" << endl;
