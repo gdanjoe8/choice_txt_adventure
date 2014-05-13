@@ -9,7 +9,7 @@
 
 using namespace std;
 
-typedef enum states{empty, intro, weapon_choice, enemymake, enemy1, enemy2, enemy3, boss, fight1, fight2, fight3, winfight, gameover, victory};
+enum states{empty, intro, weapon_choice, enemymake, enemy1, enemy2, enemy3, boss, fight1, fight2, fight3, winfight, gameover, victory};
 
 //typedef enum{intro, weapon_choice, chck_encounter, encount_gen, event_gen, boss1, boss2, boss3, event1, event2, event3, easy_fight, mid_fight, hard_fight}
 int random(int numb)//function for random numbers
@@ -40,7 +40,7 @@ int main()
 	int bosscount = 0;//count for boss encouter
 	int wincount = 0;//count for number of wins
 
-	string test = intro;
+	states test = intro;
 	while(test != empty)
 	{
 		switch(test)
