@@ -9,7 +9,7 @@
 
 using namespace std;
 
-enum states{empty, intro, weapon_choice, enemymake, enemy1, enemy2, enemy3, boss, fight1, fight2, fight3, winfight, gameover, victory};
+enum states{empty, intro, weapon_choice, enemymake, enemy1, enemy2, enemy3, boss1, fight1, fight2, fight3, winfight, gameover, victory};
 
 int random(int numb)//function for random numbers
 {
@@ -19,7 +19,7 @@ int random(int numb)//function for random numbers
 
 int damage(int ppower, int epower)//function for caclulation battle damage
 {
-	int dealt = abs(int((((ppower*0.6) - (epower*0.4))(random(5)))));
+	int dealt = abs((((ppower*(6/10)) - (epower*(4/10)))*(random(5))));
 	return dealt;
 }
 
@@ -53,7 +53,7 @@ int main()
 				cout << "Choose a name:" << endl;
 				cin >> pinput;
 				player1.setP_Name(pinput);
-				case = weapon_choice;
+				test = weapon_choice;
 				break;
 			}
 
@@ -97,7 +97,7 @@ int main()
 			{
 				if((playerlvl == 10)||(playerlvl == 18)||(playerlvl ==25))
 				{
-					test = boss;
+					test = boss1;
 					break;
 				}
 				int m = random(playerlvl);
@@ -130,7 +130,7 @@ int main()
 				{
 					bandit.setP_Agility(player1.getP_Agility() + 1);
 					bandit.setP_Power(player1.getP_Power() + 1);
-					bandit.setP_Accurcay(player1.getP_Accuracy() + 1);
+					bandit.setP_Accuracy(player1.getP_Accuracy() + 1);
 				}
 				test = fight1;
 				break;
@@ -138,7 +138,7 @@ int main()
 			case enemy2://create medium enemy
 			{
 				int randchck = random(1);
-				int ranstat2 = random(5);
+				int randstat2 = random(5);
 				if(randchck == 0)
 				{
 					bounty_hunter.setP_Agility(player1.getP_Agility() - randstat2);
@@ -149,7 +149,7 @@ int main()
 				{
 					bounty_hunter.setP_Agility(player1.getP_Agility() + randstat2);
 					bounty_hunter.setP_Power(player1.getP_Power() + randstat2);
-					bountyhunter.setP_Accurcay(player1.getP_Accuracy() + randstat2);
+					bounty_hunter.setP_Accuracy(player1.getP_Accuracy() + randstat2);
 				}
 				test = fight2;
 				break;
@@ -157,10 +157,10 @@ int main()
 			case enemy3://create strong enemy
 			{
 				int randchck3 = random(1);
-				int ranstat3 = random(8);
+				int randstat3 = random(8);
 				if(randchck3 == 0)
 				{
-					hitman.seP_tAgility(player1.getP_Agility() - randstat3);
+					hitman.seP_Agility(player1.getP_Agility() - randstat3);
 					hitman.setP_Power(player1.getP_Power() - randstat3);
 					hitman.setP_Accuracy(player1.getP_Accuracy() - randstat3);
 				}
@@ -168,7 +168,7 @@ int main()
 				{
 					hitman.setP_Agility(player1.getP_Agility() + randstat3);
 					hitman.setP_Power(player1.getP_Power() + randstat3);
-					hitman.setP_Accurcay(player1.getP_Accuracy() + randstat3);
+					hitman.setP_Accuracy(player1.getP_Accuracy() + randstat3);
 				}
 				test = fight3;
 				break;
@@ -401,7 +401,7 @@ int main()
 				test = enemymake;
 				break;
 			}
-			case boss://fight boss, after 3rd time fighting him will win game
+			case boss1://fight boss, after 3rd time fighting him will win game
 			{
 				bosscount += 1;
 				int phealth = 100;
