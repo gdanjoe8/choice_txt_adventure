@@ -13,8 +13,8 @@ public:
 	void setPower(int);
 	int getPower();
 	void setAgility(int);
-	int getAgility(int);
+	int getAgility();
 	void setAccuracy(int);
-	int getAccuracy(int);
+	int getAccuracy();
 
 };
