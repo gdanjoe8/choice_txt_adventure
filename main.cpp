@@ -511,7 +511,7 @@ int main()
 					player1.setP_Power(player1.getP_Power()+1);
 					player1.setP_Agility(player1.getP_Agility() +2);
 					player1.setP_Accuracy(player1.getP_Accuracy()+2);
-					cout << "Congradulations you managed to level up." << endl;
+					cout << "Congradulations " << player1.getP_Name() << ", you managed to level up." << endl;
 					cout << "You are now level " << playerlvl << endl;
 				}
 				test = enemymake;
@@ -537,7 +537,7 @@ int main()
 			}
 			case victory://victory condition messages
 			{
-				cout << "Congradulations you beat the final boss" << endl;
+				cout << "Congradulations " << player1.getP_Name() << ", you beat the final boss" << endl;
 				cout << "Your choices lead you to victory. " << endl;
 				test = empty;
 			}
