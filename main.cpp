@@ -209,6 +209,11 @@ int main()
 						}
 						else if(player1.getP_Agility() <= bandit.getP_Agility())
 						{
+							if(ehealth <= 0)
+							{
+								test = winfight;
+								break;
+							}
 							int endealt = damage(bandit.getP_Power(), player1.getP_Power());
 							phealth = phealth - endealt;
 							if((phealth <= 0)&& (lives <= 0))
@@ -280,6 +285,11 @@ int main()
 						}
 						else if(player1.getP_Agility() <= bounty_hunter.getP_Agility())
 						{
+							if(ehealth <= 0)
+							{
+								test = winfight;
+								break;
+							}
 							int endealt = damage(bounty_hunter.getP_Power(), player1.getP_Power());
 							phealth = phealth - endealt;
 							if((phealth <= 0)&& (lives <= 0))
@@ -351,6 +361,11 @@ int main()
 						}
 						else if(player1.getP_Agility() <= hitman.getP_Agility())
 						{
+							if(ehealth <= 0)
+							{
+								test = winfight;
+								break;
+							}
 							int endealt = damage(hitman.getP_Power(), player1.getP_Power());
 							phealth = phealth - endealt;
 							if((phealth <= 0)&& (lives <= 0))
