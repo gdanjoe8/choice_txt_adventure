@@ -1,3 +1,6 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #include <sctring>
 
 using namespace std;
@@ -21,3 +24,4 @@ public:
 	int getP_Accuracy();
 	string getP_Name();
 };
+#endif
