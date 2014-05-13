@@ -153,7 +153,7 @@ int main()
 				{
 					bounty_hunter.setP_Agility(player1.getP_Agility() + randstat);
 					bounty_hunter.setP_Power(player1.getP_Power() + randstat);
-					bountyhunter.setP_Accuracy(player1.getP_Accuracy() + randstat);
+					bounty_hunter.setP_Accuracy(player1.getP_Accuracy() + randstat);
 				}
 				test = fight2;
 				break;
