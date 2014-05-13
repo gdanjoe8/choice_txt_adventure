@@ -402,13 +402,13 @@ int main()
 				test = enemymake;
 				break;
 			}
-			case boss://fight boss, after 3rd time fighting him will win game
+			case boss1://fight boss, after 3rd time fighting him will win game
 				{
 				bosscount += 1;
 				int phealth = 100;
 				int bhealth = 200;
 				int input;
-				bstat = random(15);
+				int bstat = random(15);
 				boss.setP_Power(player1.getP_Power() + bstat);
 				boss.setP_Accuracy(player1.getP_Accuracy() + bstat);
 				boss.setP_Agility(player1.getP_Agility() + bstat);
@@ -535,7 +535,7 @@ int main()
 			}
 			case gameover://gameover messages
 			{
-				if(lives <=0))
+				if(lives <=0)
 				{
 					cout << "You lost your last live." << endl;
 					cout << "GAME OVER" << endl;
