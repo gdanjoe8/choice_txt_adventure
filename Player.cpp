@@ -1,7 +1,6 @@
-#include "Player.h"
+nclude "Player.h"
 #include <string>
-
-using namespace std::
+using namespace std;
 
 Player::Player(string name)
 {
@@ -50,4 +49,5 @@ int Player::getP_Agility()
 string Player::getP_Name()
 {
 	return player_name;
+}
 }

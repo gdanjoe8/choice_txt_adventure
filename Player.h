@@ -1,3 +1,5 @@
+fndef PLAYER_H
+#define PLAYER_H
 #include <string>
 
 using namespace std;
@@ -19,5 +21,7 @@ public:
 	int getP_Power();
 	int getP_Agility();
 	int getP_Accuracy();
-	int getP_Name();
-}
+	string getP_Name();
+};
+
+#endif
