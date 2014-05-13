@@ -161,7 +161,7 @@ int main()
 			case enemy3://create strong enemy
 			{
 				int randchck = random(1);
-				int ranstat = random(8);
+				int randstat = random(8);
 				if(randchck == 0)
 				{
 					hitman.setP_tAgility(player1.getP_Agility() - randstat);
