@@ -160,7 +160,7 @@ int main()
 				int randstat3 = random(8);
 				if(randchck3 == 0)
 				{
-					hitman.seP_Agility(player1.getP_Agility() - randstat3);
+					hitman.setP_Agility(player1.getP_Agility() - randstat3);
 					hitman.setP_Power(player1.getP_Power() - randstat3);
 					hitman.setP_Accuracy(player1.getP_Accuracy() - randstat3);
 				}
