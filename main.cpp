@@ -4,6 +4,8 @@
 #include <cmath>
 #include "Weapon.h"
 #include "Player.h"
+#include "Weapon.cpp"
+#include "Player.cpp"
 
 using namespace std;
 
