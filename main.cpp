@@ -351,7 +351,7 @@ int main()
 					cout << "Choose: fight or run" << endl;
 					cin >> pinput2;
 				}
-				if(pinput2.lenght() == 5)
+				if(pinput2.lenghth() == 5)
 				{
 					int phealth = 100;
 					int ehealth = 100;
